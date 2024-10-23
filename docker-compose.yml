@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  bigtable:
+    image: google/cloud-sdk:alpine
+    container_name: bigtable
+    command: gcloud beta emulators bigtable start --host-port=0.0.0.0:8086
+    ports:
+      - "127.0.0.1:8086:8086"
+    environment:
+      - BIGTABLE_EMULATOR_HOST=localhost:8086
+      - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+    tty: true
